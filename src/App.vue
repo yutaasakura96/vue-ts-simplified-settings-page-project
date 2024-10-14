@@ -7,11 +7,12 @@
         </li>
       </ul>
     </nav>
+    <component :is="currentTabComponent" />
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import type { Tab, TabKey } from './types';
 import TabLink from './components/TabLink.vue';
 import GeneralSettings from './components/GeneralSettings.vue';
@@ -37,4 +38,7 @@ const tabs: Tab[] = [
 ];
 
 const currentTab = ref<TabKey>('General');
+const currentTabComponent = computed(
+  () => tabs.find(tab => (tab.key === currentTab.value))?.component
+);
 </script>
