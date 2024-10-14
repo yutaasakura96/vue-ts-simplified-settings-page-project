@@ -25,6 +25,6 @@ const { privacy } = useSettings();
 
 const { addNotification } = useNotifications();
 const save = () => {
-  addNotification(`General settings were saved successfully`);
+  addNotification(`Privacy settings were saved successfully`);
 };
 </script>
