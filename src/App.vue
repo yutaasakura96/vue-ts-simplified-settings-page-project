@@ -24,6 +24,7 @@ import GeneralSettings from './components/GeneralSettings.vue';
 import NotificationsSettings from './components/NotificationsSettings.vue';
 import PrivacySettings from './components/PrivacySettings.vue';
 import FadeTransition from './components/FadeTransition.vue';
+import NotificationList from './components/NotificationList.vue';
 
 const tabs: Tab[] = [
   {
