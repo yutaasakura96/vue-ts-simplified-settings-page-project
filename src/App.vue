@@ -7,7 +7,7 @@
         </li>
       </ul>
     </nav>
-    <Transition mode="out-in" name="fade"><component :is="currentTabComponent" /></Transition>
+    <FadeTransition><component :is="currentTabComponent" /></FadeTransition>
   </main>
 </template>
 
@@ -18,6 +18,7 @@ import TabLink from './components/TabLink.vue';
 import GeneralSettings from './components/GeneralSettings.vue';
 import NotificationsSettings from './components/NotificationsSettings.vue';
 import PrivacySettings from './components/PrivacySettings.vue';
+import FadeTransition from './components/FadeTransition.vue';
 
 const tabs: Tab[] = [
   {
@@ -42,15 +43,3 @@ const currentTabComponent = computed(
   () => tabs.find(tab => tab.key === currentTab.value)?.component
 );
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
