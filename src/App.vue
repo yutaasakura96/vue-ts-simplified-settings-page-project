@@ -7,7 +7,7 @@
         </li>
       </ul>
     </nav>
-    <component :is="currentTabComponent" />
+    <Transition mode="out-in" name="fade"><component :is="currentTabComponent" /></Transition>
   </main>
 </template>
 
@@ -39,6 +39,18 @@ const tabs: Tab[] = [
 
 const currentTab = ref<TabKey>('General');
 const currentTabComponent = computed(
-  () => tabs.find(tab => (tab.key === currentTab.value))?.component
+  () => tabs.find(tab => tab.key === currentTab.value)?.component
 );
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
