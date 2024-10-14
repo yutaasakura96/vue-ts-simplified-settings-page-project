@@ -7,12 +7,17 @@
         </li>
       </ul>
     </nav>
-    <FadeTransition><component :is="currentTabComponent" /></FadeTransition>
+    <FadeTransition>
+      <KeepAlive>
+        <component :is="currentTabComponent" />
+      </KeepAlive>
+    </FadeTransition>
+    <NotificationList />
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { Tab, TabKey } from './types';
 import TabLink from './components/TabLink.vue';
 import GeneralSettings from './components/GeneralSettings.vue';
@@ -37,7 +42,6 @@ const tabs: Tab[] = [
     component: PrivacySettings
   }
 ];
-
 const currentTab = ref<TabKey>('General');
 const currentTabComponent = computed(
   () => tabs.find(tab => tab.key === currentTab.value)?.component

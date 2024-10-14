@@ -21,7 +21,6 @@ const props = defineProps<{
   currentTab: string;
   tab: Tab;
 }>();
-
 defineEmits<{
   click: [];
 }>();
