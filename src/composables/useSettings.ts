@@ -37,6 +37,18 @@ const general = ref<GeneralSettings>(
 
 watch(general, watcher('general'), { deep: true });
 
+const generalErrors = ref({
+  username: '',
+  email: ''
+});
+
+const validateGeneralSettings = () => {
+  generalErrors.value.username = !general.value.username ? 'Username is required' : '';
+  generalErrors.value.email = !general.value.email ? 'Email is required' : '';
+
+  return !generalErrors.value.username && !generalErrors.value.email;
+};
+
 interface NotificationsSettings {
   email: boolean;
   sms: boolean;
@@ -71,6 +83,8 @@ export function useSettings() {
   return {
     general,
     notifications,
-    privacy
+    privacy,
+    validateGeneralSettings,
+    generalErrors
   };
 }

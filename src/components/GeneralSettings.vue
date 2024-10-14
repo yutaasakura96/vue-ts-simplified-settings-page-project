@@ -5,10 +5,12 @@
       <div>
         <label>Username</label>
         <input type="text" v-model="general.username" />
+        <span v-if="generalErrors.username" class="text-red-500 text-sm">{{ generalErrors.username }}</span>
       </div>
       <div>
         <label>Email</label>
         <input type="email" v-model="general.email" />
+        <span v-if="generalErrors.email" class="text-red-500 text-sm">{{ generalErrors.email }}</span>
       </div>
       <div>
         <label>About Me</label>
@@ -45,9 +47,14 @@
 <script setup lang="ts">
 import { useNotifications } from '../composables/useNotifications';
 import { useSettings } from '../composables/useSettings';
-const { general } = useSettings();
+
+// Import general settings and validation from the useSettings composable
+const { general, validateGeneralSettings, generalErrors } = useSettings();
 const { addNotification } = useNotifications();
+
 const save = () => {
-  addNotification(`General settings were saved successfully`);
-}
+  if (validateGeneralSettings()) {
+    addNotification('General settings were saved successfully');
+  }
+};
 </script>
