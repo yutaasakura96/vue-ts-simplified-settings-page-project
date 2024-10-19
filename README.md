@@ -4,6 +4,10 @@ This project is built using Vue.js with TypeScript and focuses on creating a sim
 
 This template will help you get started developing with Vue 3 in Vite.
 
+## 🚀 Live DEMO
+
+Check out the live demo of the project here: [Live DEMO](https://vue-ts-simplified-settings-page-project.vercel.app/) 
+
 # ✨ Features
 
 - 🛠️ Simplified settings page built using Vue.js and TypeScript.
